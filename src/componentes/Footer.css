@@ -1,0 +1,11 @@
+footer {
+    text-align: center;
+}
+
+footer h2{
+    background-color: var(--green);
+    color: var(--lime-text);
+    margin-bottom: 16px;
+    padding: 16px 0;
+    font-size: 18px;
+}
