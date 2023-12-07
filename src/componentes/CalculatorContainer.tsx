@@ -1,4 +1,5 @@
-import { InputField } from '../@types/types';
+import { useState } from 'react';
+import { FormDataType, InputField, SalaryDetailsType } from '../@types/types';
 import './CalculatorContainer.css';
 import FormSection from './FormSection';
 import ResultCard from './ResultCard';
@@ -32,10 +33,32 @@ const inputFields:InputField[] = [
 ];
 
 function CalculatorContainer() {
+  // Estado - Valor que quando atualizado, é exibido na tela imeadiatamente
+  const [formData, setFormData] = useState({} as FormDataType);
+  const [salaryDetails, setSalaryDetails] = useState({} as SalaryDetailsType);
+
+  // Arrow Function, que por ser evento irá sempre ter o parâmetro event
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const { name, value } = e.target;
+    // Substituindo um valor por outro
+    setFormData({
+      ...formData, // Spread operator
+      [name]: value, // Computed property names [property]
+    });
+  };
+
+  const handleSubmit = () => {
+    // TODO: Eu preciso criar uma função que calcule o valor da hora de trabalho
+  };
+
   return (
     <div className="calculator__container">
       <div className="container">
-        <FormSection inputFields={ inputFields } onChange={ () => {} } />
+        <FormSection
+          inputFields={ inputFields }
+          onChange={ handleInputChange }
+          onSubmit={ handleSubmit }
+        />
         <ResultCard>
           <p>O valor mínimo para sua hora de trabalho é:</p>
           <h2>
