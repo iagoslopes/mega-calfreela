@@ -8,11 +8,11 @@ export type FormDataType = {
   monthlyNetSalary: string,
   workHoursPerDay: string,
   workDaysPerWeek: string,
-  vacationDaysPerYear: string,
+  vacationWeeksPerYear: string,
   monthlyExpenses: string,
 };
 
 export type SalaryDetailsType = {
   hourlyRate: string,
-  monthlyGrossSalary: string,
+  monthlyGrossIncome: string,
 };

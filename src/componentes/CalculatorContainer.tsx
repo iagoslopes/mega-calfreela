@@ -1,8 +1,9 @@
-import { useState } from 'react';
+import React, { useState } from 'react';
 import { FormDataType, InputField, SalaryDetailsType } from '../@types/types';
 import './CalculatorContainer.css';
 import FormSection from './FormSection';
 import ResultCard from './ResultCard';
+import { calcIncome, formatCurrency } from '../helpers/calcIncome';
 
 const inputFields:InputField[] = [
   {
@@ -47,8 +48,14 @@ function CalculatorContainer() {
     });
   };
 
-  const handleSubmit = () => {
+  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     // TODO: Eu preciso criar uma função que calcule o valor da hora de trabalho
+    e.preventDefault();
+    const formResult = calcIncome(formData);
+    setSalaryDetails({
+      hourlyRate: formatCurrency.format(formResult.hourlyRate),
+      monthlyGrossIncome: formatCurrency.format(formResult.monthlyGrossIncome),
+    });
   };
 
   return (
@@ -62,12 +69,12 @@ function CalculatorContainer() {
         <ResultCard>
           <p>O valor mínimo para sua hora de trabalho é:</p>
           <h2>
-            0,00
+            { salaryDetails.hourlyRate || '0,00' }
             <span>/hora</span>
           </h2>
           <p>O valor médio bruto que você precisa faturar é:</p>
           <h2>
-            0,00
+            { salaryDetails.monthlyGrossIncome || '0,00'}
             <span>/mês</span>
           </h2>
         </ResultCard>

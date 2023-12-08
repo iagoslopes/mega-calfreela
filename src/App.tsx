@@ -12,7 +12,6 @@ function App() {
         title="Para você que é MEI ou quer se tornar MEI, calcule o valor da sua hora de trabalho:"
       />
 
-
       <CalculatorContainer />
 
       <InfoBar

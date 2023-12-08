@@ -4,7 +4,7 @@ import './FormSection.css';
 type FormSectionProps = {
   inputFields: InputField[];
   onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
-  onSubmit: () => void;
+  onSubmit: (event: React.FormEvent<HTMLFormElement>) => void;
 };
 
 function FormSection({ inputFields, onChange, onSubmit }: FormSectionProps) {
